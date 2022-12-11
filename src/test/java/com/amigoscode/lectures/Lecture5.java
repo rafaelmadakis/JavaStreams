@@ -46,6 +46,15 @@ public class Lecture5 {
   @Test
   public void averageCarPrice() throws Exception {
     //calculate average of car prices
+    double average = getCars()
+        .stream()
+//        .mapToDouble(car -> car.getPrice())  //normal
+        .mapToDouble(Car::getPrice)// reference
+        .average()
+        .orElse(0);
+
+    System.out.println(average);
+
   }
 
 }
