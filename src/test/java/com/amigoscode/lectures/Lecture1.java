@@ -5,6 +5,7 @@ import com.amigoscode.mockdata.MockData;
 import java.io.IOException;
 import java.time.Period;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
@@ -35,8 +36,13 @@ public class Lecture1 {
     }
   }
 
+  @Test
   public void declaretiveApproachUsingStreams() throws IOException {
-    List<Person> people = MockData.getPeople();
+  MockData.getPeople().stream()
+        .filter(person -> person.getAge() <= 18)
+        .limit(10)
+        .collect(Collectors.toList())
+        .forEach(System.out::println);
 
   }
 
