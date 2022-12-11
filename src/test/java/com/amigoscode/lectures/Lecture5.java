@@ -1,9 +1,11 @@
 package com.amigoscode.lectures;
 
 import static com.amigoscode.mockdata.MockData.getCars;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import com.amigoscode.beans.Car;
 import com.amigoscode.beans.Person;
+import com.amigoscode.beans.PersonDTO;
 import com.amigoscode.mockdata.MockData;
 
 
@@ -26,12 +28,19 @@ public class Lecture5 {
     carsFiltered.forEach(System.out::println);
     System.out.println(carsFiltered.size());
 
-
   }
 
   @Test
   public void ourFirstMapping() throws Exception {
+    //transform one data type to another
     List<Person> people = MockData.getPeople();
+    List<PersonDTO> dtos = people.stream()
+        .map(PersonDTO::map)
+        .collect(Collectors.toList());
+
+    dtos.forEach(System.out::println);
+    assertThat(dtos).hasSize(1000);
+
   }
 
   @Test
