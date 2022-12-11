@@ -3,7 +3,6 @@ package com.amigoscode.lectures;
 import com.amigoscode.beans.Person;
 import com.amigoscode.mockdata.MockData;
 import java.io.IOException;
-import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.assertj.core.util.Lists;
@@ -31,7 +30,7 @@ public class Lecture1 {
         }
       }
     }
-    for ( Person young : youngPeople) {
+    for (Person young : youngPeople) {
       System.out.println(young);
     }
   }
