@@ -3,6 +3,7 @@ package com.amigoscode.lectures;
 import com.amigoscode.beans.Car;
 import com.amigoscode.mockdata.MockData;
 import com.google.common.collect.ImmutableList;
+import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -52,8 +53,15 @@ public class Lecture7 {
     System.out.println(averagePrice);
   }
 
+  @Test
   public void sum() throws Exception {
     List<Car> cars = MockData.getCars();
+    double sum = cars.stream()
+        .mapToDouble(Car::getPrice)
+        .sum();
+    BigDecimal bigDecimal = BigDecimal.valueOf(sum);
+    System.out.println(sum);
+    System.out.println(bigDecimal);
   }
 
   public void statistics() throws Exception {
