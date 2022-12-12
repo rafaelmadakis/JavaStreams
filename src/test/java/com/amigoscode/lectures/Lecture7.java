@@ -2,6 +2,7 @@ package com.amigoscode.lectures;
 
 import com.amigoscode.beans.Car;
 import com.amigoscode.mockdata.MockData;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -42,6 +43,13 @@ public class Lecture7 {
   @Test
   public void average() throws Exception {
     List<Car> cars = MockData.getCars();
+
+//    ImmutableList<Car> cars = ImmutableList.of();
+    double averagePrice = cars.stream()
+        .mapToDouble(Car::getPrice)
+        .average()
+        .orElse(0);
+    System.out.println(averagePrice);
   }
 
   public void sum() throws Exception {
