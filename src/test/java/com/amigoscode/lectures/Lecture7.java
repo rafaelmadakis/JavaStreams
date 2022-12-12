@@ -4,6 +4,7 @@ import com.amigoscode.beans.Car;
 import com.amigoscode.mockdata.MockData;
 import com.google.common.collect.ImmutableList;
 import java.math.BigDecimal;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -64,8 +65,18 @@ public class Lecture7 {
     System.out.println(bigDecimal);
   }
 
+  @Test
   public void statistics() throws Exception {
     List<Car> cars = MockData.getCars();
+    DoubleSummaryStatistics statistics = cars.stream()
+        .mapToDouble(Car::getPrice)
+        .summaryStatistics();
+    System.out.println(statistics);
+    System.out.println(statistics.getAverage());
+    System.out.println(statistics.getCount());
+    System.out.println(statistics.getMax());
+    System.out.println(statistics.getMin());
+    System.out.println(statistics.getSum());
   }
 
 }
