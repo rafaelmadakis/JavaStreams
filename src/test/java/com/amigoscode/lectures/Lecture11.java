@@ -2,13 +2,14 @@ package com.amigoscode.lectures;
 
 import com.google.common.collect.ImmutableList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 public class Lecture11 {
 
   @Test
   public void joiningStrings() throws Exception {
-    List<String> names = ImmutableList.of("anna", "john", "helena", "yasmin");
+    List<String> names = ImmutableList.of("anna", "john", "marcos", "helena", "yasmin");
 
     String join = "";
 
@@ -20,7 +21,14 @@ public class Lecture11 {
 
   @Test
   public void joiningStringsWithStreams() throws Exception {
-    List<String> names = ImmutableList.of("anna", "john", "helena", "yasmin");
+    List<String> names = ImmutableList.of("anna", "john", "marcos", "helena", "yasmin");
+
+    String join = names.stream()
+        .map(String::toUpperCase)
+        .collect(Collectors.joining("| "));
+
+    System.out.println(join);
+
   }
 
 }
